@@ -1,0 +1,13 @@
+{
+  "name": "kriss/webman-filesystem",
+  "type": "library",
+  "license": "MIT",
+  "description": "Webman plugin kriss/webman-filesystem",
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Kriss\\WebmanFilesystem\\": "src"
+    }
+  }
+}
