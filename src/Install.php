@@ -9,7 +9,8 @@ class Install
      * @var array
      */
     protected static $pathRelation = array (
-  'config/plugin/kriss/webman-filesystem' => 'config/plugin/kriss/webman-filesystem',
+  'copy/config/plugin/kriss/webman-filesystem' => 'config/plugin/kriss/webman-filesystem',
+  'copy/storage' => 'storage',
 );
 
     /**

@@ -4,20 +4,23 @@
   "license": "MIT",
   "description": "Webman plugin kriss/webman-filesystem",
   "require": {
-    "php": ">=7.4",
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "workerman/webman-framework": "^1.4",
+    "league/flysystem": "^1.1",
     "illuminate/filesystem": "^8.83"
   },
   "autoload": {
     "psr-4": {
       "Kriss\\WebmanFilesystem\\": "src"
-    }
-  },
-  "require-dev": {
-    "workerman/webman-framework": "^1.4",
-    "league/flysystem": "1.0"
+    },
+    "files": [
+      "src/helper.php"
+    ]
   },
   "suggest": {
-    "league/flysystem:^1.11": "for illuminate/filesystem <9",
-    "league/flysystem:^3.0": "for illuminate/filesystem >=9"
+    "illuminate/filesystem:~8 and league/flysystem:~1.1": "flysystem v1 for laravel v8",
+    "illuminate/filesystem:~9 and league/flysystem:~3.0": "flysystem v3 for laravel v9"
   }
 }
