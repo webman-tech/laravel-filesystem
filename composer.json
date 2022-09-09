@@ -9,7 +9,8 @@
   "require-dev": {
     "workerman/webman-framework": "^1.4",
     "league/flysystem": "^1.1",
-    "illuminate/filesystem": "^8.83"
+    "illuminate/filesystem": "^8.83",
+    "webman/console": "^1.2"
   },
   "autoload": {
     "psr-4": {

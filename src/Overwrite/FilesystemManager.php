@@ -36,6 +36,14 @@ class FilesystemManager extends LaravelFilesystemManager
     /**
      * @inheritDoc
      */
+    public function createSftpDriver(array $config)
+    {
+        return FilesystemAdapter::wrapper(parent::createSftpDriver($config));
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function createS3Driver(array $config)
     {
         return FilesystemAdapter::wrapper(parent::createS3Driver($config));
