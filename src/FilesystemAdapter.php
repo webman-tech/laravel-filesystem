@@ -2,12 +2,9 @@
 
 namespace Kriss\WebmanFilesystem;
 
-use Illuminate\Filesystem\AwsS3V3Adapter;
 use Illuminate\Filesystem\FilesystemAdapter as LaravelFilesystemAdapter;
 use InvalidArgumentException;
 use Kriss\WebmanFilesystem\Traits\ChangeHttpUse;
-use League\Flysystem\FilesystemInterface;
-use League\Flysystem\FilesystemOperator;
 
 class FilesystemAdapter extends LaravelFilesystemAdapter
 {
@@ -15,27 +12,27 @@ class FilesystemAdapter extends LaravelFilesystemAdapter
 
     public static function wrapper(LaravelFilesystemAdapter $filesystemAdapter)
     {
+        if ($filesystemAdapter instanceof self) {
+            return $filesystemAdapter;
+        }
+
         /**
          * laravel 8 -> 9
          * @link http://laravel.p2hp.com/cndocs/9.x/upgrade#flysystem-3
          */
-        if (interface_exists(FilesystemInterface::class)) {
-            // flysystem v1 版本
-            if (class_exists(AwsS3V3Adapter::class)) {
-                // laravel 9 添加了该类
+        if (!VersionHelper::isGteLaravel9()) {
+            if (VersionHelper::isGteFlysystem3()) {
                 throw new InvalidArgumentException('illuminate/filesystem<9 only support league/flysystem<=1');
             }
             return new self($filesystemAdapter->getDriver());
         }
-        if (interface_exists(FilesystemOperator::class)) {
-            // flysystem v2v3 版本
-            if (!class_exists(AwsS3V3Adapter::class)) {
-                // laravel 9 添加了该类
-                throw new InvalidArgumentException('league/flysystem>1 need illuminate/filesystem>=9');
+        if (VersionHelper::isGteLaravel9()) {
+            if (!VersionHelper::isGteFlysystem3()) {
+                throw new InvalidArgumentException('illuminate/filesystem>=9 only support league/flysystem>=3');
             }
             return new self($filesystemAdapter->getDriver(), $filesystemAdapter->getAdapter(), $filesystemAdapter->getConfig());
         }
 
-        throw new InvalidArgumentException('not support league/flysystem version');
+        throw new InvalidArgumentException('illuminate/filesystem version not matching league/flysystem version');
     }
 }
