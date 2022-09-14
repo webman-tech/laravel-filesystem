@@ -6,7 +6,7 @@ Laravel [illuminate/filesystem](https://packagist.org/packages/illuminate/filesy
 
 站在巨人（laravel）的肩膀上使文件存储使用更加*可靠*和*便捷*
 
-所有方法和配置与 laravel 几乎一模一样，因此使用方式完成参考 [Laravel文档](http://laravel.p2hp.com/cndocs/8.x/filesystem) 即可
+所有方法和配置与 laravel 几乎一模一样，因此使用方式完全参考 [Laravel文档](http://laravel.p2hp.com/cndocs/8.x/filesystem) 即可
 
 ## 安装
 
@@ -29,6 +29,12 @@ composer require kriss/webman-filesystem illuminate/filesystem
 composer require league/flysystem:~1.1
 # illuminate/filesystem >= 9.0
 composer require league/flysystem
+```
+
+3. 安装 `symfony/mime`（可选），用于校验文件真实的 mime-type
+
+```bash
+composer require symfony/mime
 ```
 
 ## 使用
@@ -89,7 +95,7 @@ class UserAvatarController
 
 #### Aliyun OSS
 
-使用 `iidestiny/flysystem-oss`
+使用 [iidestiny/flysystem-oss](https://github.com/iiDestiny/laravel-filesystem-oss)
 
 ```bash
 # illuminate/filesystem < 9.0
@@ -100,7 +106,7 @@ composer require iidestiny/flysystem-oss
 
 #### QiNiu
 
-使用 `overtrue/flysystem-qiniu`
+使用 [overtrue/flysystem-qiniu](https://github.com/overtrue/laravel-filesystem-qiniu)
 
 ```bash
 # illuminate/filesystem < 9.0
@@ -111,7 +117,7 @@ composer require overtrue/flysystem-qiniu
 
 #### Tencent COS
 
-使用 `overtrue/flysystem-cos`
+使用 [overtrue/flysystem-cos](https://github.com/overtrue/laravel-filesystem-cos)
 
 ```bash
 # illuminate/filesystem < 9.0
