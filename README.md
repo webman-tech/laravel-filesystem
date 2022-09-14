@@ -26,9 +26,9 @@ composer require kriss/webman-filesystem illuminate/filesystem
 
 ```bash
 # illuminate/filesystem < 9.0
-composer require kriss/webman-filesystem:~1.1
-# illuminate/filesystem < 9.0
-composer require kriss/webman-filesystem:~3.0
+composer require league/flysystem:~1.1
+# illuminate/filesystem >= 9.0
+composer require league/flysystem
 ```
 
 ## 使用
@@ -82,4 +82,18 @@ class UserAvatarController
 
 ### 自定义文件系统
 
-TODO
+通过在 `filesystems.php` 配置文件的 `extends` 中添加驱动（驱动可以通过实现 `Kriss\WebmanFilesystem\Extend\ExtendInterface` 来快速创建），
+然后在 `disks` 中添加对应的实例即可 
+
+目前提供以下非 Laravel 官方库支持的文件系统，可自行参考替换相应的实现
+
+#### Aliyun oss
+
+使用 `iidestiny/flysystem-oss`
+
+```bash
+# illuminate/filesystem < 9.0
+composer require iidestiny/flysystem-oss:~2.7
+# illuminate/filesystem >= 9.0
+composer require iidestiny/flysystem-oss
+```

@@ -3,6 +3,7 @@
 namespace Kriss\WebmanFilesystem;
 
 use Illuminate\Filesystem\FilesystemManager as LaravelFilesystemManager;
+use Kriss\WebmanFilesystem\Extend\ExtendInterface;
 use Kriss\WebmanFilesystem\Traits\ChangeAppUse;
 
 class FilesystemManager extends LaravelFilesystemManager
@@ -14,6 +15,7 @@ class FilesystemManager extends LaravelFilesystemManager
     public function __construct()
     {
         $this->filesystemConfig = config('plugin.kriss.webman-filesystem.filesystems', []);
+        $this->customCreators = $this->filesystemConfig['extends'] ?? [];
         parent::__construct(null);
     }
 
@@ -47,5 +49,18 @@ class FilesystemManager extends LaravelFilesystemManager
     public function createS3Driver(array $config)
     {
         return FilesystemAdapter::wrapper(parent::createS3Driver($config));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function callCustomCreator(array $config)
+    {
+        $creator = $this->customCreators[$config['driver']];
+        if (is_string($creator) && is_a($creator, ExtendInterface::class, true)) {
+            return $creator::createExtend($config);
+        }
+
+        return parent::callCustomCreator($config);
     }
 }
