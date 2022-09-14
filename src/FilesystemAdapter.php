@@ -1,11 +1,11 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Overwrite;
+namespace Kriss\WebmanFilesystem;
 
 use Illuminate\Filesystem\AwsS3V3Adapter;
 use Illuminate\Filesystem\FilesystemAdapter as LaravelFilesystemAdapter;
 use InvalidArgumentException;
-use Kriss\WebmanFilesystem\Overwrite\Traits\ChangeHttpUse;
+use Kriss\WebmanFilesystem\Traits\ChangeHttpUse;
 use League\Flysystem\FilesystemInterface;
 use League\Flysystem\FilesystemOperator;
 

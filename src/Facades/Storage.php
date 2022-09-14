@@ -2,7 +2,7 @@
 
 namespace Kriss\WebmanFilesystem\Facades;
 
-use Kriss\WebmanFilesystem\Overwrite\FilesystemManager;
+use Kriss\WebmanFilesystem\FilesystemManager;
 use support\Container;
 
 /**

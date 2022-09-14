@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Overwrite\Traits;
+namespace Kriss\WebmanFilesystem\Traits;
 
 use Illuminate\Support\Str;
 use Kriss\WebmanFilesystem\Http\UploadedFile;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Overwrite\Traits;
+namespace Kriss\WebmanFilesystem\Traits;
 
 /**
  * 替换 $this->app 的使用

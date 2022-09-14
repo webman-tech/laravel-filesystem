@@ -1,9 +1,9 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Overwrite;
+namespace Kriss\WebmanFilesystem;
 
 use Illuminate\Filesystem\FilesystemManager as LaravelFilesystemManager;
-use Kriss\WebmanFilesystem\Overwrite\Traits\ChangeAppUse;
+use Kriss\WebmanFilesystem\Traits\ChangeAppUse;
 
 class FilesystemManager extends LaravelFilesystemManager
 {
