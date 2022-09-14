@@ -10,7 +10,8 @@
     "workerman/webman-framework": "^1.4",
     "league/flysystem": "^1.1",
     "illuminate/filesystem": "^8.83",
-    "webman/console": "^1.2"
+    "webman/console": "^1.2",
+    "symfony/mime": "^5.4"
   },
   "autoload": {
     "psr-4": {
@@ -22,6 +23,7 @@
   },
   "suggest": {
     "illuminate/filesystem:~8 and league/flysystem:~1.1": "flysystem v1 for laravel v8",
-    "illuminate/filesystem:~9 and league/flysystem:~3.0": "flysystem v3 for laravel v9"
+    "illuminate/filesystem:~9 and league/flysystem:~3.0": "flysystem v3 for laravel v9",
+    "symfony/mime": "UploadedFile need to guess real extension"
   }
 }

@@ -57,7 +57,28 @@ php webman storage:link
 
 ### 文件上传
 
-TODO
+原 Laravel 下通过 `$request()->file()` 之后的快捷文件操作，使用 `UploadedFile::wrapper($request->file())` 来代替，举例如下：
+
+> 注意：此处操作非完全兼容，因为 Laravel 的 UploadedFile 是基于 Symfony 的 UploadedFile 的，而我们的是基于 webman 的 UploadFile 的
+
+```bash
+<?php
+
+namespace app\controller;
+
+use Kriss\WebmanFilesystem\Http\UploadedFile;
+use support\Request;
+
+class UserAvatarController
+{
+    public function update(Request $request)
+    {
+        $path = UploadedFile::wrapper($request->file('avatar'))->store('avatars');
+        
+        return response($path);
+    }
+}
+```
 
 ### 自定义文件系统
 

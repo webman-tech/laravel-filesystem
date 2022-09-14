@@ -11,7 +11,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path() . '/app/public',
-            'url' => '/storage',
+            'url' => '/storage', // 建议使用 http:// 或 https:// 开头的完整 url
             'visibility' => 'public',
             'throw' => false,
         ],

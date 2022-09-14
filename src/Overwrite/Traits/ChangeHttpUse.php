@@ -3,6 +3,7 @@
 namespace Kriss\WebmanFilesystem\Overwrite\Traits;
 
 use Illuminate\Support\Str;
+use Kriss\WebmanFilesystem\Http\UploadedFile;
 use Webman\File;
 use Webman\Http\UploadFile;
 
@@ -13,15 +14,34 @@ trait ChangeHttpUse
 {
     /**
      * @inheritDoc
-     * @return \support\Response
+     * @return \Webman\Http\Response
+     */
+    public function download($path, $name = null, array $headers = [])
+    {
+        return $this->response($path, $name, $headers, 'attachment');
+    }
+
+    /**
+     * @inheritDoc
+     * @return \Webman\Http\Response
      */
     public function response($path, $name = null, array $headers = [], $disposition = 'inline')
     {
-        $response = response()->withHeaders($headers);
-        if ($name) {
-            return $response->download($path, $name);
+        $response = response();
+        $filename = $name ?? basename($path);
+        foreach ($headers + [
+            'Content-Type' => $this->mimeType($path),
+            'Content-Length' => $this->size($path),
+            'Content-Disposition' => "{$disposition}; filename=\"$filename\"",
+        ] as $key => $value) {
+            $response->withHeader($key, $value);
         }
-        return $response->withFile($path);
+        ob_start();
+        $stream = $this->readStream($path);
+        fpassthru($stream);
+        fclose($stream);
+        $content = ob_get_clean();
+        return $response->withBody($content);
     }
 
     /**
@@ -34,7 +54,7 @@ trait ChangeHttpUse
             ? ['visibility' => $options]
             : (array) $options;
 
-        if ($contents instanceof UploadFile) {
+        if ($contents instanceof File) {
             return $this->putFile($path, $contents, $options);
         }
 
@@ -43,7 +63,7 @@ trait ChangeHttpUse
 
     /**
      * @inheritDoc
-     * @param UploadFile|File|string $file
+     * @param UploadedFile|UploadFile|File|string $file
      */
     public function putFile($path, $file, $options = [])
     {
