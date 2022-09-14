@@ -27,7 +27,7 @@ return [
             'throw' => false,
         ],
         'oss' => [
-            // 配置参考：@link https://github.com/iiDestiny/laravel-filesystem-oss/tree/master
+            // 配置参考：https://github.com/iiDestiny/laravel-filesystem-oss/tree/master
             'driver' => 'oss',
             'root' => '', // 设置上传时根前缀
             'access_key' => env('OSS_ACCESS_KEY'),
@@ -47,6 +47,14 @@ return [
                 //...
             ],
         ],
+        'qiniu' => [
+            // 配置参考：https://github.com/overtrue/laravel-filesystem-qiniu
+            'driver' => 'qiniu',
+            'access_key' => env('QINIU_ACCESS_KEY', 'xxxxxxxxxxxxxxxx'),
+            'secret_key' => env('QINIU_SECRET_KEY', 'xxxxxxxxxxxxxxxx'),
+            'bucket' => env('QINIU_BUCKET', 'test'),
+            'domain' => env('QINIU_DOMAIN', 'xxx.clouddn.com'), // or host: https://xxxx.clouddn.com
+        ]
     ],
     'links' => [
         public_path() . '/storage' => storage_path() . '/app/public',
@@ -54,5 +62,6 @@ return [
     'extends' => [
         // 其他文件系统的扩展
         'oss' => \Kriss\WebmanFilesystem\Extend\OssExtend::class,
+        'qiniu' => \Kriss\WebmanFilesystem\Extend\QiNiuExtend::class,
     ],
 ];

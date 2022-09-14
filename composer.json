@@ -12,7 +12,8 @@
     "illuminate/filesystem": "^8.83",
     "webman/console": "^1.2",
     "symfony/mime": "^5.4",
-    "iidestiny/flysystem-oss": "~2"
+    "iidestiny/flysystem-oss": "~2",
+    "overtrue/flysystem-qiniu": "~1"
   },
   "autoload": {
     "psr-4": {

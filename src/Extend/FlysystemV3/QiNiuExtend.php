@@ -2,31 +2,25 @@
 
 namespace Kriss\WebmanFilesystem\Extend\FlysystemV3;
 
-use Iidestiny\Flysystem\Oss\OssAdapter;
 use Illuminate\Filesystem\FilesystemAdapter;
 use League\Flysystem\Filesystem;
+use Overtrue\Flysystem\Qiniu\QiniuAdapter;
 
 /**
- * @link https://github.com/iiDestiny/laravel-filesystem-oss/blob/master/src/OssStorageServiceProvider.php
+ * @link https://github.com/overtrue/laravel-filesystem-qiniu/blob/master/src/QiniuStorageServiceProvider.php
  */
-class OssExtend implements ExtendInterface
+class QiNiuExtend implements ExtendInterface
 {
     /**
      * @inheritDoc
      */
     public static function createFilesystemAdapter($config): FilesystemAdapter
     {
-        $root = $config['root'] ?? null;
-        $buckets = $config['buckets'] ?? [];
-
-        $adapter = new OssAdapter(
+        $adapter = new QiniuAdapter(
             $config['access_key'],
             $config['secret_key'],
-            $config['endpoint'],
             $config['bucket'],
-            $config['isCName'],
-            $root,
-            $buckets
+            $config['domain']
         );
 
         return new FilesystemAdapter(new Filesystem($adapter), $adapter, $config);

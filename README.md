@@ -97,3 +97,14 @@ composer require iidestiny/flysystem-oss:~2.7
 # illuminate/filesystem >= 9.0
 composer require iidestiny/flysystem-oss
 ```
+
+#### QiNiu
+
+使用 `overtrue/flysystem-qiniu`
+
+```bash
+# illuminate/filesystem < 9.0
+composer require overtrue/flysystem-qiniu:~1
+# illuminate/filesystem >= 9.0
+composer require overtrue/flysystem-qiniu
+```
