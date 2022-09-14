@@ -87,7 +87,7 @@ class UserAvatarController
 
 目前提供以下非 Laravel 官方库支持的文件系统，可自行参考替换相应的实现
 
-#### Aliyun oss
+#### Aliyun OSS
 
 使用 `iidestiny/flysystem-oss`
 
@@ -107,4 +107,15 @@ composer require iidestiny/flysystem-oss
 composer require overtrue/flysystem-qiniu:~1
 # illuminate/filesystem >= 9.0
 composer require overtrue/flysystem-qiniu
+```
+
+#### Tencent COS
+
+使用 `overtrue/flysystem-cos`
+
+```bash
+# illuminate/filesystem < 9.0
+composer require overtrue/flysystem-cos:~3
+# illuminate/filesystem >= 9.0
+composer require oovertrue/flysystem-cos
 ```
