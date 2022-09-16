@@ -1,9 +1,9 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Traits;
+namespace WebmanTech\LaravelFilesystem\Traits;
 
 use Illuminate\Support\Str;
-use Kriss\WebmanFilesystem\Http\UploadedFile;
+use WebmanTech\LaravelFilesystem\Http\UploadedFile;
 use Webman\File;
 use Webman\Http\UploadFile;
 

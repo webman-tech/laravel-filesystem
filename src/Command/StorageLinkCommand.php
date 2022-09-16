@@ -1,8 +1,8 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Command;
+namespace WebmanTech\LaravelFilesystem\Command;
 
-use Kriss\WebmanFilesystem\Facades\File;
+use WebmanTech\LaravelFilesystem\Facades\File;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

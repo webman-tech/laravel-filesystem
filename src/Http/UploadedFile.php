@@ -1,11 +1,11 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Http;
+namespace WebmanTech\LaravelFilesystem\Http;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Traits\Macroable;
-use Kriss\WebmanFilesystem\Facades\Storage;
+use WebmanTech\LaravelFilesystem\Facades\Storage;
 use Webman\Http\UploadFile;
 
 /**

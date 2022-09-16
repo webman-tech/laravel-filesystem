@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Extend;
+namespace WebmanTech\LaravelFilesystem\Extend;
 
 use Illuminate\Filesystem\FilesystemAdapter;
 use League\Flysystem\Filesystem;

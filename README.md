@@ -47,9 +47,9 @@ Unix 系统下需要给予 `storage/app` 目录写权限
 
 ### Facade 入口
 
-使用 `Kriss\WebmanFilesystem\Facades\File` 代替 `Illuminate\Support\Facades\File`
+使用 `WebmanTech\LaravelFilesystem\Facades\File` 代替 `Illuminate\Support\Facades\File`
 
-使用 `Kriss\WebmanFilesystem\Facades\Storage` 代替 `Illuminate\Support\Facades\Storage`
+使用 `WebmanTech\LaravelFilesystem\Facades\Storage` 代替 `Illuminate\Support\Facades\Storage`
 
 ### 建立软链
 
@@ -72,7 +72,7 @@ php webman storage:link
 
 namespace app\controller;
 
-use Kriss\WebmanFilesystem\Http\UploadedFile;
+use WebmanTech\LaravelFilesystem\Http\UploadedFile;
 use support\Request;
 
 class UserAvatarController
@@ -88,7 +88,7 @@ class UserAvatarController
 
 ### 自定义文件系统
 
-通过在 `filesystems.php` 配置文件的 `extends` 中添加驱动（驱动可以通过实现 `Kriss\WebmanFilesystem\Extend\ExtendInterface` 来快速创建），
+通过在 `filesystems.php` 配置文件的 `extends` 中添加驱动（驱动可以通过实现 `WebmanTech\LaravelFilesystem\Extend\ExtendInterface` 来快速创建），
 然后在 `disks` 中添加对应的实例即可 
 
 目前提供以下非 Laravel 官方库支持的文件系统，可自行参考替换相应的实现

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Extend\FlysystemV1;
+namespace WebmanTech\LaravelFilesystem\Extend\FlysystemV1;
 
 use League\Flysystem\Filesystem;
 

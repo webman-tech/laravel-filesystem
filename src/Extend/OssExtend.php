@@ -1,8 +1,8 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Extend;
+namespace WebmanTech\LaravelFilesystem\Extend;
 
-use Kriss\WebmanFilesystem\VersionHelper;
+use WebmanTech\LaravelFilesystem\VersionHelper;
 
 class OssExtend implements ExtendInterface
 {

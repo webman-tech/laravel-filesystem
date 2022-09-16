@@ -1,8 +1,8 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Facades;
+namespace WebmanTech\LaravelFilesystem\Facades;
 
-use Kriss\WebmanFilesystem\FilesystemManager;
+use WebmanTech\LaravelFilesystem\FilesystemManager;
 use support\Container;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Http;
+namespace WebmanTech\LaravelFilesystem\Http;
 
 use Symfony\Component\Mime\MimeTypes;
 use Webman\Exception\FileException;

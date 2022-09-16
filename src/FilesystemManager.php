@@ -1,10 +1,10 @@
 <?php
 
-namespace Kriss\WebmanFilesystem;
+namespace WebmanTech\LaravelFilesystem;
 
 use Illuminate\Filesystem\FilesystemManager as LaravelFilesystemManager;
-use Kriss\WebmanFilesystem\Extend\ExtendInterface;
-use Kriss\WebmanFilesystem\Traits\ChangeAppUse;
+use WebmanTech\LaravelFilesystem\Extend\ExtendInterface;
+use WebmanTech\LaravelFilesystem\Traits\ChangeAppUse;
 
 class FilesystemManager extends LaravelFilesystemManager
 {

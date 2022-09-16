@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Traits;
+namespace WebmanTech\LaravelFilesystem\Traits;
 
 /**
  * 替换 $this->app 的使用

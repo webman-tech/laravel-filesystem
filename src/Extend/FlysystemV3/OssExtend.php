@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Extend\FlysystemV3;
+namespace WebmanTech\LaravelFilesystem\Extend\FlysystemV3;
 
 use Iidestiny\Flysystem\Oss\OssAdapter;
 use Illuminate\Filesystem\FilesystemAdapter;

@@ -1,6 +1,6 @@
 <?php
 
-use Kriss\WebmanFilesystem\Command\StorageLinkCommand;
+use WebmanTech\LaravelFilesystem\Command\StorageLinkCommand;
 
 return [
     StorageLinkCommand::class,

@@ -83,8 +83,8 @@ return [
     ],
     'extends' => [
         // 其他文件系统的扩展
-        'oss' => \Kriss\WebmanFilesystem\Extend\OssExtend::class,
-        'qiniu' => \Kriss\WebmanFilesystem\Extend\QiNiuExtend::class,
-        'cos' => \Kriss\WebmanFilesystem\Extend\CosExtend::class,
+        'oss' => \WebmanTech\LaravelFilesystem\Extend\OssExtend::class,
+        'qiniu' => \WebmanTech\LaravelFilesystem\Extend\QiNiuExtend::class,
+        'cos' => \WebmanTech\LaravelFilesystem\Extend\CosExtend::class,
     ],
 ];

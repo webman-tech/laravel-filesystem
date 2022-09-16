@@ -1,5 +1,5 @@
 <?php
-namespace Kriss\WebmanFilesystem;
+namespace WebmanTech\LaravelFilesystem;
 
 class Install
 {

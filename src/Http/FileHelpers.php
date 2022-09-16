@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Http;
+namespace WebmanTech\LaravelFilesystem\Http;
 
 use Illuminate\Support\Str;
 

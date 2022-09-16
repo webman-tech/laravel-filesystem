@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanFilesystem\Facades;
+namespace WebmanTech\LaravelFilesystem\Facades;
 
 use Illuminate\Filesystem\Filesystem;
 use support\Container;

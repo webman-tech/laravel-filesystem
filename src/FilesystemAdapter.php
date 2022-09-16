@@ -1,10 +1,10 @@
 <?php
 
-namespace Kriss\WebmanFilesystem;
+namespace WebmanTech\LaravelFilesystem;
 
 use Illuminate\Filesystem\FilesystemAdapter as LaravelFilesystemAdapter;
 use InvalidArgumentException;
-use Kriss\WebmanFilesystem\Traits\ChangeHttpUse;
+use WebmanTech\LaravelFilesystem\Traits\ChangeHttpUse;
 
 class FilesystemAdapter extends LaravelFilesystemAdapter
 {
