@@ -1,4 +1,4 @@
-# kriss/webman-filesystem
+# webman-tech/laravel-filesystem
 
 Laravel [illuminate/filesystem](https://packagist.org/packages/illuminate/filesystem) for webman
 
@@ -17,7 +17,7 @@ Laravel [illuminate/filesystem](https://packagist.org/packages/illuminate/filesy
 1. 安装 `kriss/webman-filesystem` 和 `illuminate/filesystem`
 
 ```bash
-composer require kriss/webman-filesystem illuminate/filesystem
+composer require webman-tech/laravel-filesystem illuminate/filesystem
 ```
 
 2. 安装 `league/flysystem`
