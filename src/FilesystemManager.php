@@ -14,7 +14,7 @@ class FilesystemManager extends LaravelFilesystemManager
 
     public function __construct()
     {
-        $this->filesystemConfig = config('plugin.kriss.webman-filesystem.filesystems', []);
+        $this->filesystemConfig = config('plugin.webman-tech.laravel-filesystem.filesystems', []);
         $this->customCreators = $this->filesystemConfig['extends'] ?? [];
         parent::__construct(null);
     }

@@ -56,8 +56,13 @@ use support\Container;
  */
 class File
 {
+    public static function instance(): Filesystem
+    {
+        return Container::get(Filesystem::class);
+    }
+
     public static function __callStatic($name, $arguments)
     {
-        return Container::get(Filesystem::class)->{$name}(...$arguments);
+        return static::instance()->{$name}(...$arguments);
     }
 }

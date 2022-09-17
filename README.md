@@ -31,12 +31,6 @@ composer require league/flysystem:~1.1
 composer require league/flysystem
 ```
 
-3. 安装 `symfony/mime`（可选），用于校验文件真实的 mime-type
-
-```bash
-composer require symfony/mime
-```
-
 ## 使用
 
 所有 API 同 laravel，以下仅对有些特殊的操作做说明
@@ -61,26 +55,35 @@ php webman storage:link
 
 > 同 Laravel，可以支持自定义建立多个对外的路劲软链
 
-### 文件上传
+### Request 文件上传
 
-原 Laravel 下通过 `$request()->file()` 之后的快捷文件操作，使用 `UploadedFile::wrapper($request->file())` 来代替，举例如下：
+原 Laravel 下通过 `$request()->file()` 之后的快捷文件操作，需要使用 [`webman-tech/polyfill`](https://github.com/webman-tech/polyfill) 来支持
 
-> 注意：此处操作非完全兼容，因为 Laravel 的 UploadedFile 是基于 Symfony 的 UploadedFile 的，而我们的是基于 webman 的 UploadFile 的
+安装
+
+```bash
+composer require webman-tech/polyfill illuminate/http
+```
+
+使用
 
 ```bash
 <?php
 
 namespace app\controller;
 
-use WebmanTech\LaravelFilesystem\Http\UploadedFile;
 use support\Request;
+use WebmanTech\Polyfill\LaravelRequest;
+use WebmanTech\Polyfill\LaravelUploadedFile;
 
 class UserAvatarController
 {
     public function update(Request $request)
     {
-        $path = UploadedFile::wrapper($request->file('avatar'))->store('avatars');
-        
+        $path = LaravelRequest::wrapper($request)->file('file')->store('avatars');
+        // 或者
+        $path = LaravelUploadedFile::wrapper($request->file('avatar'))->store('avatars');
+
         return response($path);
     }
 }
