@@ -10,7 +10,10 @@ class FilesystemManager extends LaravelFilesystemManager
 {
     use ChangeAppUse;
 
-    protected array $filesystemConfig = [];
+    /**
+     * @var array
+     */
+    protected $filesystemConfig = [];
 
     public function __construct()
     {

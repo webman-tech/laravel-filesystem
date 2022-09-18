@@ -9,7 +9,7 @@ class Install
      * @var array
      */
     protected static $pathRelation = array (
-  'copy/config/plugin/kriss/webman-filesystem' => 'config/plugin/kriss/webman-filesystem',
+  'copy/config/plugin/webman-tech/laravel-filesystem' => 'config/plugin/webman-tech/laravel-filesystem',
   'copy/storage' => 'storage',
 );
 
