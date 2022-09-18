@@ -4,11 +4,11 @@
   "license": "MIT",
   "description": "Webman plugin webman-tech/laravel-filesystem",
   "require": {
-    "php": ">=7.2"
+    "php": ">=7.2",
+    "illuminate/filesystem": ">=8"
   },
   "require-dev": {
     "iidestiny/flysystem-oss": "~2",
-    "illuminate/filesystem": "^8.83",
     "league/flysystem": "^1.1",
     "overtrue/flysystem-cos": "~3",
     "overtrue/flysystem-qiniu": "~1",
@@ -24,8 +24,8 @@
     ]
   },
   "suggest": {
-    "illuminate/filesystem:~8 and league/flysystem:~1.1": "flysystem v1 for laravel v8",
-    "illuminate/filesystem:~9 and league/flysystem:~3.0": "flysystem v3 for laravel v9"
+    "league/flysystem:~1": "for laravel < 9",
+    "league/flysystem:~3": "for laravel >= 9"
   },
   "config": {
     "sort-packages": true
