@@ -65,7 +65,7 @@ class StorageLinkCommand extends Command
      */
     protected function links()
     {
-        return config('plugin.kriss.webman-filesystem.filesystems.links', [
+        return config('plugin.webman-tech/laravel-filesystem.filesystems.links', [
             public_path() . '/storage' => storage_path() . '/app/public',
         ]);
     }

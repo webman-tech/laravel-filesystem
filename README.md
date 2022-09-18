@@ -14,7 +14,7 @@ Laravel [illuminate/filesystem](https://packagist.org/packages/illuminate/filesy
 ，低于 larval 9 的版本需要使用 league/flysystem 1.x 的版本
 ，因此安装该依赖需要手动安装 `illuminate/filesystem` 和 `league/flysystem`
 
-1. 安装 `kriss/webman-filesystem` 和 `illuminate/filesystem`
+1. 安装 `webman-tech/laravel-filesystem` 和 `illuminate/filesystem`
 
 ```bash
 composer require webman-tech/laravel-filesystem illuminate/filesystem
