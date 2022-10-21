@@ -21,7 +21,9 @@ class CosExtend implements ExtendInterface
 
         $filesystem = new Filesystem($adapter);
         $filesystem->addPlugin(new FileUrl());
-        $filesystem->addPlugin(new FileSignedUrl());
+        if (class_exists(FileSignedUrl::class)) {
+            $filesystem->addPlugin(new FileSignedUrl());
+        }
 
         return $filesystem;
     }

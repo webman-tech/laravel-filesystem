@@ -5,13 +5,13 @@
   "description": "Webman plugin webman-tech/laravel-filesystem",
   "require": {
     "php": ">=7.2",
-    "illuminate/filesystem": ">=8"
+    "illuminate/filesystem": "^7.0|^8.0|^9.0"
   },
   "require-dev": {
     "iidestiny/flysystem-oss": "~2",
-    "league/flysystem": "^1.1",
-    "overtrue/flysystem-cos": "~3",
-    "overtrue/flysystem-qiniu": "~1",
+    "league/flysystem": "^1.1|^3.0",
+    "overtrue/flysystem-cos": "^2|^3|^4|^5",
+    "overtrue/flysystem-qiniu": "^1|^3",
     "webman/console": "^1.2",
     "workerman/webman-framework": "^1.4"
   },
