@@ -3,6 +3,7 @@
 namespace WebmanTech\LaravelFilesystem;
 
 use Illuminate\Filesystem\FilesystemManager as LaravelFilesystemManager;
+use League\Flysystem\FilesystemInterface;
 use WebmanTech\LaravelFilesystem\Extend\ExtendInterface;
 use WebmanTech\LaravelFilesystem\Traits\ChangeAppUse;
 
@@ -59,11 +60,18 @@ class FilesystemManager extends LaravelFilesystemManager
      */
     protected function callCustomCreator(array $config)
     {
-        $creator = $this->customCreators[$config['driver']];
-        if (is_string($creator) && is_a($creator, ExtendInterface::class, true)) {
-            return $creator::createExtend($config);
-        }
+        $adapter = (function($config) {
+            $creator = $this->customCreators[$config['driver']];
+            if (is_string($creator) && is_a($creator, ExtendInterface::class, true)) {
+                $driver = $creator::createExtend($config);
+                if ($driver instanceof FilesystemInterface && method_exists($this, 'adapt')) {
+                    return $this->adapt($driver);
+                }
+                return $driver;
+            }
 
-        return parent::callCustomCreator($config);
+            return parent::callCustomCreator($config);
+        })($config);
+        return FilesystemAdapter::wrapper($adapter);
     }
 }
