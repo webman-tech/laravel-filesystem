@@ -13,7 +13,7 @@ use Overtrue\Flysystem\Qiniu\QiniuAdapter;
 /**
  * @link https://github.com/overtrue/laravel-filesystem-qiniu/blob/1.0.2/src/QiniuStorageServiceProvider.php
  */
-class QiNiuExtend implements ExtendInterface
+class QiNiuOvertrueExtend implements ExtendInterface
 {
     /**
      * @inheritDoc

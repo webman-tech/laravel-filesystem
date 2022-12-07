@@ -15,7 +15,7 @@ use League\Flysystem\Filesystem;
 /**
  * @link https://github.com/iiDestiny/laravel-filesystem-oss/blob/2.1/src/OssStorageServiceProvider.php
  */
-class OssExtend implements ExtendInterface
+class OssIiDestinyExtend implements ExtendInterface
 {
     /**
      * @inheritDoc
@@ -23,7 +23,7 @@ class OssExtend implements ExtendInterface
     public static function createFilesystem($config): Filesystem
     {
         $root = $config['root'] ?? null;
-        $buckets = isset($config['buckets']) ? $config['buckets'] : [];
+        $buckets = $config['buckets'] ?? [];
         $adapter = new OssAdapter(
             $config['access_key'],
             $config['secret_key'],

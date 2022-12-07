@@ -9,7 +9,7 @@ use League\Flysystem\Filesystem;
 /**
  * @link https://github.com/iiDestiny/laravel-filesystem-oss/blob/master/src/OssStorageServiceProvider.php
  */
-class OssExtend implements ExtendInterface
+class OssIiDestinyExtend implements ExtendInterface
 {
     /**
      * @inheritDoc

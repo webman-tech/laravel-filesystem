@@ -4,7 +4,7 @@ namespace WebmanTech\LaravelFilesystem\Extend;
 
 use WebmanTech\LaravelFilesystem\VersionHelper;
 
-class OssExtend implements ExtendInterface
+class OssAlphaSnowExtend implements ExtendInterface
 {
     /**
      * @inheritDoc
@@ -12,8 +12,8 @@ class OssExtend implements ExtendInterface
     public static function createExtend($config)
     {
         if (!VersionHelper::isGteFlysystem3()) {
-            return FlysystemV1\OssExtend::createFilesystem($config);
+            return FlysystemV1\OssAlphaSnowExtend::createFilesystem($config);
         }
-        return FlysystemV3\OssExtend::createFilesystemAdapter($config);
+        return FlysystemV3\OssAlphaSnowExtend::createFilesystemAdapter($config);
     }
 }

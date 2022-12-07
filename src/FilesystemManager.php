@@ -20,6 +20,17 @@ class FilesystemManager extends LaravelFilesystemManager
     {
         $this->filesystemConfig = config('plugin.webman-tech.laravel-filesystem.filesystems', []);
         $this->customCreators = $this->filesystemConfig['extends'] ?? [];
+        $autoExtends = collect($this->filesystemConfig['disks'])
+            ->pluck('driver')
+            ->unique()
+            ->filter(function (string $driver) {
+                return class_exists($driver) && is_a($driver, ExtendInterface::class, true);
+            })
+            ->mapWithKeys(function (string $driver) {
+                return [$driver => $driver];
+            })
+            ->all();
+        $this->customCreators = array_merge($autoExtends, $this->customCreators);
         parent::__construct(null);
     }
 
