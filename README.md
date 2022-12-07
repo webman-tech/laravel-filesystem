@@ -91,40 +91,12 @@ class UserAvatarController
 
 ### 自定义文件系统
 
-通过在 `filesystems.php` 配置文件的 `extends` 中添加驱动（驱动可以通过实现 `WebmanTech\LaravelFilesystem\Extend\ExtendInterface` 来快速创建），
-然后在 `disks` 中添加对应的实例即可 
+通过在 `filesystems.php` 配置文件的 `disks` 中的 `driver` 直接使用驱动扩展类的 class 名即可（驱动扩展实现 `WebmanTech\LaravelFilesystem\Extend\ExtendInterface`）
 
 目前提供以下非 Laravel 官方库支持的文件系统，可自行参考替换相应的实现
 
-#### Aliyun OSS
-
-使用 [iidestiny/flysystem-oss](https://github.com/iiDestiny/laravel-filesystem-oss)
-
-```bash
-# illuminate/filesystem < 9.0
-composer require iidestiny/flysystem-oss:~2.7
-# illuminate/filesystem >= 9.0
-composer require iidestiny/flysystem-oss
-```
-
-#### QiNiu
-
-使用 [overtrue/flysystem-qiniu](https://github.com/overtrue/laravel-filesystem-qiniu)
-
-```bash
-# illuminate/filesystem < 9.0
-composer require overtrue/flysystem-qiniu:~1
-# illuminate/filesystem >= 9.0
-composer require overtrue/flysystem-qiniu
-```
-
-#### Tencent COS
-
-使用 [overtrue/flysystem-cos](https://github.com/overtrue/laravel-filesystem-cos)
-
-```bash
-# illuminate/filesystem < 9.0
-composer require overtrue/flysystem-cos:~3
-# illuminate/filesystem >= 9.0
-composer require oovertrue/flysystem-cos
-```
+| 厂商          | 扩展包                                                                              | 支持 Laravel9 | 安装使用                                   |
+|-------------|----------------------------------------------------------------------------------|-------------|----------------------------------------|
+| Aliyun OSS  | [iidestiny/flysystem-oss](https://github.com/iiDestiny/laravel-filesystem-oss)   | 是           | [文档](./docs/extends/oss-iidestiny.md)  |
+| QiNiu       | [overtrue/flysystem-qiniu](https://github.com/overtrue/laravel-filesystem-qiniu) | 是           | [文档](./docs/extends/qiniu-overtrue.md) |
+| Tencent COS | [overtrue/flysystem-cos](https://github.com/overtrue/laravel-filesystem-cos)     | 是           | [文档](./docs/extends/cos-overtrue.md)   |
