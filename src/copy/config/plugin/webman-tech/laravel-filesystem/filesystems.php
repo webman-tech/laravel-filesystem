@@ -28,7 +28,7 @@ return [
         ],
         'oss' => [
             // 配置与使用：https://github.com/iiDestiny/laravel-filesystem-oss
-            'driver' => 'oss',
+            'driver' => \WebmanTech\LaravelFilesystem\Extend\OssIiDestinyExtend::class,
             'root' => '', // 设置上传时根前缀
             'access_key' => getenv('OSS_ACCESS_KEY'),
             'secret_key' => getenv('OSS_SECRET_KEY'),
@@ -49,7 +49,7 @@ return [
         ],
         'qiniu' => [
             // 配置与使用：https://github.com/overtrue/laravel-filesystem-qiniu
-            'driver' => 'qiniu',
+            'driver' => \WebmanTech\LaravelFilesystem\Extend\QiNiuOvertrueExtend::class,
             'access_key' => getenv('QINIU_ACCESS_KEY', 'xxxxxxxxxxxxxxxx'),
             'secret_key' => getenv('QINIU_SECRET_KEY', 'xxxxxxxxxxxxxxxx'),
             'bucket' => getenv('QINIU_BUCKET', 'test'),
@@ -57,7 +57,7 @@ return [
         ],
         'cos' => [
             // 配置与使用：https://github.com/overtrue/laravel-filesystem-cos
-            'driver' => 'cos',
+            'driver' => \WebmanTech\LaravelFilesystem\Extend\CosOvertrueExtend::class,
             'app_id'     => getenv('COS_APP_ID'),
             'secret_id'  => getenv('COS_SECRET_ID'),
             'secret_key' => getenv('COS_SECRET_KEY'),
@@ -80,11 +80,5 @@ return [
     ],
     'links' => [
         public_path() . '/storage' => storage_path() . '/app/public',
-    ],
-    'extends' => [
-        // 其他文件系统的扩展
-        'oss' => \WebmanTech\LaravelFilesystem\Extend\OssExtend::class,
-        'qiniu' => \WebmanTech\LaravelFilesystem\Extend\QiNiuExtend::class,
-        'cos' => \WebmanTech\LaravelFilesystem\Extend\CosExtend::class,
     ],
 ];

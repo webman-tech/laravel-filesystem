@@ -4,7 +4,7 @@ namespace WebmanTech\LaravelFilesystem\Extend;
 
 use WebmanTech\LaravelFilesystem\VersionHelper;
 
-class QiNiuExtend implements ExtendInterface
+class QiNiuOvertrueExtend implements ExtendInterface
 {
     /**
      * @inheritDoc
@@ -12,8 +12,8 @@ class QiNiuExtend implements ExtendInterface
     public static function createExtend($config)
     {
         if (!VersionHelper::isGteFlysystem3()) {
-            return FlysystemV1\QiNiuExtend::createFilesystem($config);
+            return FlysystemV1\QiNiuOvertrueExtend::createFilesystem($config);
         }
-        return FlysystemV3\QiNiuExtend::createFilesystemAdapter($config);
+        return FlysystemV3\QiNiuOvertrueExtend::createFilesystemAdapter($config);
     }
 }

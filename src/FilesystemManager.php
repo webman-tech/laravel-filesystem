@@ -61,7 +61,7 @@ class FilesystemManager extends LaravelFilesystemManager
     protected function callCustomCreator(array $config)
     {
         $adapter = (function($config) {
-            $creator = $this->customCreators[$config['driver']];
+            $creator = $this->customCreators[$config['driver']] ?? $config['driver'];
             if (is_string($creator) && is_a($creator, ExtendInterface::class, true)) {
                 $driver = $creator::createExtend($config);
                 if ($driver instanceof FilesystemInterface && method_exists($this, 'adapt')) {

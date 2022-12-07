@@ -4,7 +4,7 @@ namespace WebmanTech\LaravelFilesystem\Extend;
 
 use WebmanTech\LaravelFilesystem\VersionHelper;
 
-class CosExtend implements ExtendInterface
+class OssIiDestinyExtend implements ExtendInterface
 {
     /**
      * @inheritDoc
@@ -12,8 +12,8 @@ class CosExtend implements ExtendInterface
     public static function createExtend($config)
     {
         if (!VersionHelper::isGteFlysystem3()) {
-            return FlysystemV1\CosExtend::createFilesystem($config);
+            return FlysystemV1\OssIiDestinyExtend::createFilesystem($config);
         }
-        return FlysystemV3\CosExtend::createFilesystemAdapter($config);
+        return FlysystemV3\OssIiDestinyExtend::createFilesystemAdapter($config);
     }
 }

@@ -9,7 +9,7 @@ use Overtrue\Flysystem\Cos\CosAdapter;
 /**
  * @link https://github.com/overtrue/laravel-filesystem-cos/blob/master/src/CosStorageServiceProvider.php
  */
-class CosExtend implements ExtendInterface
+class CosOvertrueExtend implements ExtendInterface
 {
     /**
      * @inheritDoc

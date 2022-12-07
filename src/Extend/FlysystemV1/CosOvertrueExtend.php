@@ -10,7 +10,7 @@ use Overtrue\Flysystem\Cos\Plugins\FileUrl;
 /**
  * @link https://github.com/overtrue/laravel-filesystem-cos/blob/2.0.0/src/CosStorageServiceProvider.php
  */
-class CosExtend implements ExtendInterface
+class CosOvertrueExtend implements ExtendInterface
 {
     /**
      * @inheritDoc
