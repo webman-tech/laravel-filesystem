@@ -14,7 +14,6 @@ class OssAlphaSnowExtend implements ExtendInterface
         if (!VersionHelper::isGteFlysystem3()) {
             return FlysystemV1\OssAlphaSnowExtend::createFilesystem($config);
         }
-        throw new \InvalidArgumentException('Not support');
-        //return FlysystemV3\OssAlphaSnowExtend::createFilesystemAdapter($config);
+        return FlysystemV3\OssAlphaSnowExtend::createFilesystemAdapter($config);
     }
 }
