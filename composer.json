@@ -5,7 +5,7 @@
   "description": "Webman plugin webman-tech/laravel-filesystem",
   "require": {
     "php": ">=7.2",
-    "illuminate/filesystem": "^7.0|^8.0|^9.0"
+    "illuminate/filesystem": ">=7.0"
   },
   "require-dev": {
     "alphasnow/aliyun-oss-laravel": "^3.0|^4.0",
