@@ -12,7 +12,8 @@ Laravel [illuminate/filesystem](https://packagist.org/packages/illuminate/filesy
 
 > 由于 laravel 9 升级了 league/flysystem 到 3.x，详见[Laravel9升级说明](http://laravel.p2hp.com/cndocs/9.x/upgrade#flysystem-3)
 ，低于 larval 9 的版本需要使用 league/flysystem 1.x 的版本
-，因此安装该依赖需要手动安装 `illuminate/filesystem` 和 `league/flysystem`
+，<del>因此安装该依赖需要手动安装 `illuminate/filesystem` 和 `league/flysystem`</del>
+，目前正常能根据 php 版本自动安装响应版本的 `league/flysystem` 无需手动
 
 1. 安装 `webman-tech/laravel-filesystem`
 

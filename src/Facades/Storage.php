@@ -2,6 +2,7 @@
 
 namespace WebmanTech\LaravelFilesystem\Facades;
 
+use Illuminate\Contracts\Filesystem\Factory as FactoryContract;
 use support\Container;
 use WebmanTech\LaravelFilesystem\FilesystemManager;
 
@@ -49,7 +50,7 @@ use WebmanTech\LaravelFilesystem\FilesystemManager;
  */
 class Storage
 {
-    public static function instance(): FilesystemManager
+    public static function instance(): FactoryContract
     {
         return Container::get(FilesystemManager::class);
     }

@@ -50,6 +50,7 @@ use support\Container;
  * @method static \Illuminate\Support\LazyCollection lines(string $path)
  * @method static void relativeLink(string $target, string $link)
  * @method static void replace(string $path, string $content)
+ * @method static void replaceInFile(array|string $search, array|string $replace, string $path) >=8.0 才有该方法
  *
  * @see \Illuminate\Filesystem\Filesystem
  * @see \Illuminate\Support\Facades\File
