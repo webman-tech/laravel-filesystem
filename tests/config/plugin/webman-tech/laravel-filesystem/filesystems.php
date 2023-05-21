@@ -113,7 +113,7 @@ return [
             'secret_key' => get_env('OSS_SECRET_KEY', 'xxx'),
             'endpoint' => get_env('OSS_ENDPOINT', 'oss-cn-shanghai.aliyuncs.com'), // 使用 ssl 这里设置如: https://oss-cn-beijing.aliyuncs.com
             'bucket' => get_env('OSS_BUCKET', 'my-storage'),
-            'isCName' => get_env('OSS_IS_CNAME'), // 如果 isCname 为 false，endpoint 应配置 oss 提供的域名如：`oss-cn-beijing.aliyuncs.com`，否则为自定义域名，，cname 或 cdn 请自行到阿里 oss 后台配置并绑定 bucket
+            'isCName' => get_env('OSS_IS_CNAME', false), // 如果 isCname 为 false，endpoint 应配置 oss 提供的域名如：`oss-cn-beijing.aliyuncs.com`，否则为自定义域名，，cname 或 cdn 请自行到阿里 oss 后台配置并绑定 bucket
             // 如果有更多的 bucket 需要切换，就添加所有bucket，默认的 bucket 填写到上面，不要加到 buckets 中
             'buckets' => [
                 'test' => [
