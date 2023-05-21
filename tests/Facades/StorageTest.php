@@ -175,7 +175,7 @@ class StorageTest extends TestCase
         Storage::put($filename2, 'delete');
         $this->assertTrue(Storage::delete([$filename, $filename2])); // 删除多个存在的文件
         Storage::put($filename, 'delete');
-        $this->assertFalse(Storage::delete([$filename, $filename2])); // 删除多个存在的文件中有一个失败
+        $this->assertEquals(VersionHelper::isGteFlysystem3(), Storage::delete([$filename, $filename2])); // 删除多个存在，有一个不存在时，league/flysystem v3 时返回为 true
 
         // copy 复制
         $filename = 'copy.txt';
