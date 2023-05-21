@@ -281,8 +281,39 @@ class StorageTest extends TestCase
         $this->assertTrue(Storage::deleteDirectory($path));
     }
 
+    public function testExtend()
+    {
+        $map = array_filter([
+            'qiniu' => \Overtrue\Flysystem\Qiniu\QiniuAdapter::class,
+            'cos' => \Overtrue\Flysystem\Cos\CosAdapter::class,
+            'oss' => VersionHelper::isGteLaravel9() ? \AlphaSnow\Flysystem\Aliyun\AliyunAdapter::class : \AlphaSnow\AliyunOss\Adapter::class,
+            'oss2' =>
+                $this->isVersionOverPhp82()
+                    ? null // 目前不支持 php8.2，因为使用到了 ${var} 写法
+                    : \Iidestiny\Flysystem\Oss\OssAdapter::class,
+        ]);
+
+        foreach ($map as $name => $instance) {
+            $disk = Storage::disk($name);
+            $this->assertInstanceOf(Filesystem::class, $disk);
+            $this->assertInstanceOf($instance, $this->getAdapter($disk));
+        }
+    }
+
     protected function normalizePath(string $path)
     {
         return str_replace('\\', '/', $path);
+    }
+
+    protected function getAdapter(Filesystem $disk)
+    {
+        return VersionHelper::isGteLaravel9()
+            ? $disk->getAdapter()
+            : $disk->getDriver()->getAdapter();
+    }
+
+    protected function isVersionOverPhp82()
+    {
+        return version_compare(phpversion(), '8.2', '>=');
     }
 }
