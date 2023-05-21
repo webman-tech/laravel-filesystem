@@ -322,7 +322,8 @@ class FileTest extends TestCase
         File::link($this->testPath, $linkPath);
         $this->assertTrue(file_exists($linkPath . '/link.txt'));
         $this->assertEquals('link', file_get_contents($linkPath . '/link.txt'));
-        rmdir($linkPath);
+        @rmdir($linkPath); // windows
+        @unlink($linkPath); // linux
 
         // relativeLink 类 link，使用相对路径
     }
