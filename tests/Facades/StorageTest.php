@@ -13,6 +13,7 @@ use Webman\Http\Response;
 use WebmanTech\LaravelFilesystem\Facades\File;
 use WebmanTech\LaravelFilesystem\Facades\Storage;
 use WebmanTech\LaravelFilesystem\FilesystemManager;
+use WebmanTech\LaravelFilesystem\VersionHelper;
 
 /**
  * https://laravel.com/docs/10.x/filesystem
@@ -166,14 +167,14 @@ class StorageTest extends TestCase
         // delete 删除
         $filename = 'delete.txt';
         $filename2 = 'delete2.txt';
-        $this->assertFalse(Storage::delete($filename)); // 删除不存在的文件
+        $this->assertEquals(VersionHelper::isGteFlysystem3(), Storage::delete($filename)); // 删除不存在的文件，league/flysystem v3 时返回为 true
         Storage::put($filename, 'delete');
         $this->assertTrue(Storage::delete($filename)); // 删除单个已存在的文件
         $this->assertFalse(Storage::exists($filename));
         Storage::put($filename, 'delete');
         Storage::put($filename2, 'delete');
         $this->assertTrue(Storage::delete([$filename, $filename2])); // 删除多个存在的文件
-        file_put_contents($filename, 'delete');
+        Storage::put($filename, 'delete');
         $this->assertFalse(Storage::delete([$filename, $filename2])); // 删除多个存在的文件中有一个失败
 
         // copy 复制
