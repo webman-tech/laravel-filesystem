@@ -276,7 +276,7 @@ class StorageTest extends TestCase
 
         // deleteDirectory 删除目录
         $path = 'deleteDirectory';
-        $this->assertFalse(Storage::deleteDirectory($path));
+        $this->assertEquals(VersionHelper::isGteFlysystem3(), Storage::deleteDirectory($path)); // 删除不存在的目录时，league/flysystem v3 时返回为 true
         Storage::makeDirectory($path);
         $this->assertTrue(Storage::deleteDirectory($path));
     }
