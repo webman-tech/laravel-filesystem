@@ -10,7 +10,7 @@ use WebmanTech\LaravelFilesystem\FilesystemManager;
  * @method static \Illuminate\Contracts\Filesystem\Filesystem assertExists(string|array $path)
  * @method static \Illuminate\Contracts\Filesystem\Filesystem assertMissing(string|array $path)
  * @method static \Illuminate\Contracts\Filesystem\Filesystem cloud()
- * @method static \Illuminate\Contracts\Filesystem\Filesystem build(string|array $root)
+ * @method static \Illuminate\Contracts\Filesystem\Filesystem build(string|array $root) laravel >=8.0 才有该方法
  * @method static \Illuminate\Contracts\Filesystem\Filesystem disk(string|null $name = null)
  * @method static \Illuminate\Filesystem\FilesystemManager extend(string $driver, \Closure $callback)
  * @method static \Webman\Http\Response download(string $path, string|null $name = null, array|null $headers = [])

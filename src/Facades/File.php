@@ -47,10 +47,10 @@ use support\Container;
  * @method static string|null guessExtension(string $path)
  * @method static void ensureDirectoryExists(string $path, int $mode = 0755, bool $recursive = true)
  * @method static void link(string $target, string $link)
- * @method static \Illuminate\Support\LazyCollection lines(string $path)
+ * @method static \Illuminate\Support\LazyCollection lines(string $path) laravel >=8.0 才有该方法
  * @method static void relativeLink(string $target, string $link)
  * @method static void replace(string $path, string $content)
- * @method static void replaceInFile(array|string $search, array|string $replace, string $path) >=8.0 才有该方法
+ * @method static void replaceInFile(array|string $search, array|string $replace, string $path) laravel >=8.0 才有该方法
  *
  * @see \Illuminate\Filesystem\Filesystem
  * @see \Illuminate\Support\Facades\File
