@@ -5,7 +5,7 @@ return [
     'disks' => [
         'local' => [
             'driver' => 'local',
-            'root' => storage_path() . '/app',
+            'root' => storage_path() . '/test-storage', // 修改测试时的目录，方便清空
             'throw' => false,
         ],
         'public' => [
@@ -26,6 +26,12 @@ return [
             'use_path_style_endpoint' => getenv('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
         ],
+        // add cloud
+        'cloud' => [
+            'driver' => 'local',
+            'root' => storage_path() . '/app',
+            'throw' => false,
+        ]
     ],
     'links' => [
         public_path() . '/storage' => storage_path() . '/app/public',

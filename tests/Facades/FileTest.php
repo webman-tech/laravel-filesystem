@@ -28,7 +28,6 @@ class FileTest extends TestCase
         parent::tearDown();
 
         File::deleteDirectory($this->testPath);
-        @rmdir(storage_path() . '/link'); // 移除link的目录
     }
 
     public function testInstance()
