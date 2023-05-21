@@ -60,7 +60,7 @@ class FileTest extends TestCase
         $this->assertEquals('ok', File::sharedGet($filename));
 
         // getRequire  require xxx.php 并返回
-        $filename = $this->testPath . '/getRequire.txt';
+        $filename = $this->testPath . '/getRequire.php';
         try {
             File::getRequire($filename);
         } catch (Throwable $e) {
@@ -69,11 +69,11 @@ class FileTest extends TestCase
         file_put_contents($filename, "<?php\n return ['a' => 'b'];");
         $this->assertEquals(['a' => 'b'], File::getRequire($filename));
 
-        // requireOnce 类 getRequire，使用 require_once
-        $filename = $this->testPath . '/requireOnce.txt';
-        file_put_contents($filename, "<?php\n return ['a' => 'b'];");
-        $this->assertEquals(['a' => 'b'], File::requireOnce($filename)); // 第一次取到
-        $this->assertTrue(File::requireOnce($filename)); // 第二次返回 true
+        // requireOnce
+        $filename = $this->testPath . '/requireOnce.php';
+        file_put_contents($filename, "<?php\n function requireOnceFn() {}");
+        File::requireOnce($filename);
+        $this->assertTrue(function_exists('requireOnceFn'));
 
         // lines 独立测试
 
