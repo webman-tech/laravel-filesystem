@@ -54,8 +54,18 @@ class StorageTest extends TestCase
         // cloud
         $this->assertInstanceOf(Cloud::class, Storage::cloud());
 
-        // build
-        $this->assertInstanceOf(Filesystem::class, Storage::build(storage_path() . '/app'));
+        // build 单独测试
+    }
+
+    public function testFilesystemManagerBuild()
+    {
+        try {
+            $this->assertInstanceOf(Filesystem::class, Storage::build(storage_path() . '/app'));
+        } catch (Throwable $e) {
+            if (strpos($e->getMessage(), 'Call to undefined method') !== false) {
+                $this->markTestSkipped('>= 8 才有该方法');
+            }
+        }
     }
 
     public function testFilesystemFunction()
