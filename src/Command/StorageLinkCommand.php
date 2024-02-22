@@ -36,7 +36,7 @@ class StorageLinkCommand extends Command
 
         foreach ($this->links() as $link => $target) {
             if (file_exists($link) && !$this->isRemovableSymlink($link, $input->getOption('force'))) {
-                $output->writeln("Error: The [$link] link already exists.");
+                $output->writeln("The [$link] link already exists.");
                 continue;
             }
 
