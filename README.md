@@ -98,9 +98,9 @@ class UserAvatarController
 
 排名不分先后，不做具体推荐
 
-| 厂商          | 扩展包                                                                              | 支持 Laravel9 | 安装使用                                   |
-|-------------|----------------------------------------------------------------------------------|-------------|----------------------------------------|
-| Aliyun OSS  | [iidestiny/flysystem-oss](https://github.com/iiDestiny/laravel-filesystem-oss)   | 是           | [文档](./docs/extends/oss-iidestiny.md)  |
-| QiNiu       | [overtrue/flysystem-qiniu](https://github.com/overtrue/laravel-filesystem-qiniu) | 是           | [文档](./docs/extends/qiniu-overtrue.md) |
-| Tencent COS | [overtrue/flysystem-cos](https://github.com/overtrue/laravel-filesystem-cos)     | 是           | [文档](./docs/extends/cos-overtrue.md)   |
-| Aliyun OSS  | [alphasnow/aliyun-oss-laravel](https://github.com/alphasnow/aliyun-oss-laravel)  | 是           | [文档](./docs/extends/oss-alphasnow.md)  |
+| 厂商          | 扩展包                                                                              | 支持 Laravel>=9 | 安装使用                                   |
+|-------------|----------------------------------------------------------------------------------|---------------|----------------------------------------|
+| Aliyun OSS  | [iidestiny/flysystem-oss](https://github.com/iiDestiny/laravel-filesystem-oss)   | 是             | [文档](./docs/extends/oss-iidestiny.md)  |
+| QiNiu       | [overtrue/flysystem-qiniu](https://github.com/overtrue/laravel-filesystem-qiniu) | 是             | [文档](./docs/extends/qiniu-overtrue.md) |
+| Tencent COS | [overtrue/flysystem-cos](https://github.com/overtrue/laravel-filesystem-cos)     | 是             | [文档](./docs/extends/cos-overtrue.md)   |
+| Aliyun OSS  | [alphasnow/aliyun-oss-laravel](https://github.com/alphasnow/aliyun-oss-laravel)  | 是             | [文档](./docs/extends/oss-alphasnow.md)  |
