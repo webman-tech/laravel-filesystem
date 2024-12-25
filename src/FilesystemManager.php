@@ -37,33 +37,9 @@ class FilesystemManager extends LaravelFilesystemManager
     /**
      * @inheritDoc
      */
-    public function createLocalDriver(array $config)
+    protected function adapt(FilesystemInterface $filesystem)
     {
-        return FilesystemAdapter::wrapper(parent::createLocalDriver($config));
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function createFtpDriver(array $config)
-    {
-        return FilesystemAdapter::wrapper(parent::createFtpDriver($config));
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function createSftpDriver(array $config)
-    {
-        return FilesystemAdapter::wrapper(parent::createSftpDriver($config));
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function createS3Driver(array $config)
-    {
-        return FilesystemAdapter::wrapper(parent::createS3Driver($config));
+        return FilesystemAdapter::wrapper(parent::adapt($filesystem));
     }
 
     /**
