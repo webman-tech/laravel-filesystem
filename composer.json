@@ -49,6 +49,7 @@
     }
   },
   "scripts": {
-    "test": "pest"
+    "test": "pest",
+    "transform-facade-comments": "php scripts/transform_facade_comments.php"
   }
 }

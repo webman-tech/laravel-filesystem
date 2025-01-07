@@ -2,25 +2,27 @@
 
 namespace WebmanTech\LaravelFilesystem\Command;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use WebmanTech\LaravelFilesystem\Facades\File;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use WebmanTech\LaravelFilesystem\Helper\ConfigHelper;
 
 /**
- * @link https://github.com/laravel/framework/blob/8.x/src/Illuminate/Foundation/Console/StorageLinkCommand.php
+ * @link https://github.com/laravel/framework/blob/11.x/src/Illuminate/Foundation/Console/StorageLinkCommand.php
  */
+#[AsCommand(name: 'storage:link')]
 class StorageLinkCommand extends Command
 {
-    protected static $defaultName = 'storage:link';
-    protected static $defaultDescription = 'Create the symbolic links configured for the application';
-
     /**
      * @return void
      */
     protected function configure()
     {
+        $this->setName('storage:link');
+        $this->setDescription('Create the symbolic links configured for the application');
         $this->addOption('relative', null, InputOption::VALUE_NONE, 'Create the symbolic link using relative paths');
         $this->addOption('force', null, InputOption::VALUE_NONE, 'Recreate existing symbolic links');
     }
@@ -30,7 +32,7 @@ class StorageLinkCommand extends Command
      * @param OutputInterface $output
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $relative = $input->getOption('relative');
 
@@ -65,9 +67,7 @@ class StorageLinkCommand extends Command
      */
     protected function links()
     {
-        return config('plugin.webman-tech.laravel-filesystem.filesystems.links', [
-            public_path() . '/storage' => storage_path() . '/app/public',
-        ]);
+        return ConfigHelper::get('filesystems.links', []);
     }
 
     /**

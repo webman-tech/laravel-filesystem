@@ -18,15 +18,6 @@ final class FilesystemAdapter extends LaravelFilesystemAdapter
      * @inheritDoc
      * @return \Webman\Http\Response
      */
-    public function download($path, $name = null, array $headers = [])
-    {
-        return $this->response($path, $name, $headers, 'attachment');
-    }
-
-    /**
-     * @inheritDoc
-     * @return \Webman\Http\Response
-     */
     public function response($path, $name = null, array $headers = [], $disposition = 'inline')
     {
         $response = response();
