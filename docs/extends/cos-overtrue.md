@@ -1,10 +1,7 @@
 # 安装依赖
 
 ```bash
-# illuminate/filesystem < 9.0
-composer require overtrue/flysystem-cos:~3
-# illuminate/filesystem >= 9.0
-composer require oovertrue/flysystem-cos
+composer require overtrue/flysystem-cos
 ```
 
 # 配置

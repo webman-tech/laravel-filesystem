@@ -1,9 +1,6 @@
 # 安装依赖
 
 ```bash
-# illuminate/filesystem < 9.0
-composer require overtrue/flysystem-qiniu:~1
-# illuminate/filesystem >= 9.0
 composer require overtrue/flysystem-qiniu
 ```
 

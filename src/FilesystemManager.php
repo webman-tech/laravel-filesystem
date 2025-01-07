@@ -2,25 +2,19 @@
 
 namespace WebmanTech\LaravelFilesystem;
 
+use Illuminate\Config\Repository;
 use Illuminate\Filesystem\FilesystemManager as LaravelFilesystemManager;
-use League\Flysystem\FilesystemInterface;
 use WebmanTech\LaravelFilesystem\Extend\ExtendInterface;
-use WebmanTech\LaravelFilesystem\Traits\ChangeAppUse;
+use WebmanTech\LaravelFilesystem\Helper\ConfigHelper;
 
 class FilesystemManager extends LaravelFilesystemManager
 {
-    use ChangeAppUse;
-
-    /**
-     * @var array
-     */
-    protected $filesystemConfig = [];
-
     public function __construct()
     {
-        $this->filesystemConfig = config('plugin.webman-tech.laravel-filesystem.filesystems', []);
-        $this->customCreators = $this->filesystemConfig['extends'] ?? [];
-        $autoExtends = collect($this->filesystemConfig['disks'])
+        $config = ConfigHelper::get('filesystems', []);
+
+        // 从 disks 中提取 driver 作为自动扩展
+        $autoExtends = collect($config['disks'] ?? [])
             ->pluck('driver')
             ->unique()
             ->filter(function (string $driver) {
@@ -30,16 +24,32 @@ class FilesystemManager extends LaravelFilesystemManager
                 return [$driver => $driver];
             })
             ->all();
-        $this->customCreators = array_merge($autoExtends, $this->customCreators);
-        parent::__construct(null);
+        $this->customCreators = array_merge($autoExtends, $this->filesystemConfig['extends'] ?? []);
+
+        // 替换 app
+        $app = new LaravelApplication([
+            'config' => new Repository([
+                'filesystems' => $config,
+            ]),
+            // 用于 local 生成 temporaryUrl，原来使用的是 $app['url'] 组件
+            // 但实际 webman 应该都不会装，因此不需要支持
+            // 此处暂时留个可以扩展的口子
+            'url' => $config['url_component'] ?? null,
+        ]);
+        parent::__construct($app);
     }
 
     /**
      * @inheritDoc
      */
-    protected function adapt(FilesystemInterface $filesystem)
+    protected function resolve($name, $config = null)
     {
-        return FilesystemAdapter::wrapper(parent::adapt($filesystem));
+        $v = parent::resolve($name, $config);
+        if ($v instanceof \Illuminate\Filesystem\FilesystemAdapter) {
+            return FilesystemAdapter::wrapper($v);
+        }
+
+        return $v;
     }
 
     /**
@@ -47,18 +57,12 @@ class FilesystemManager extends LaravelFilesystemManager
      */
     protected function callCustomCreator(array $config)
     {
-        $adapter = (function($config) {
-            $creator = $this->customCreators[$config['driver']];
-            if (is_string($creator) && is_a($creator, ExtendInterface::class, true)) {
-                $driver = $creator::createExtend($config);
-                if ($driver instanceof FilesystemInterface && method_exists($this, 'adapt')) {
-                    return $this->adapt($driver);
-                }
-                return $driver;
-            }
+        // ExtendInterface 快速创建
+        $creator = $this->customCreators[$config['driver']];
+        if (is_string($creator) && is_a($creator, ExtendInterface::class, true)) {
+            return $creator::createExtend($config);
+        }
 
-            return parent::callCustomCreator($config);
-        })($config);
-        return FilesystemAdapter::wrapper($adapter);
+        return parent::callCustomCreator($config);
     }
 }

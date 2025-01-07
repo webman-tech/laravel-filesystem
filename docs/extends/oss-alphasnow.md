@@ -1,9 +1,6 @@
 # 安装依赖
 
 ```bash
-# illuminate/filesystem < 9.0
-composer require alphasnow/aliyun-oss-laravel:~3.0
-# illuminate/filesystem >= 9.0
 composer require alphasnow/aliyun-oss-laravel
 ```
 

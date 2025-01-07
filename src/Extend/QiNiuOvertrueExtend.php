@@ -2,18 +2,27 @@
 
 namespace WebmanTech\LaravelFilesystem\Extend;
 
-use WebmanTech\LaravelFilesystem\VersionHelper;
+use Illuminate\Filesystem\FilesystemAdapter;
+use League\Flysystem\Filesystem;
+use Overtrue\Flysystem\Qiniu\QiniuAdapter;
 
+/**
+ * @link https://github.com/overtrue/laravel-filesystem-qiniu/blob/master/src/QiniuStorageServiceProvider.php
+ */
 class QiNiuOvertrueExtend implements ExtendInterface
 {
     /**
      * @inheritDoc
      */
-    public static function createExtend($config)
+    public static function createExtend(array $config): FilesystemAdapter
     {
-        if (!VersionHelper::isGteFlysystem3()) {
-            return FlysystemV1\QiNiuOvertrueExtend::createFilesystem($config);
-        }
-        return FlysystemV3\QiNiuOvertrueExtend::createFilesystemAdapter($config);
+        $adapter = new QiniuAdapter(
+            $config['access_key'],
+            $config['secret_key'],
+            $config['bucket'],
+            $config['domain']
+        );
+
+        return new FilesystemAdapter(new Filesystem($adapter), $adapter, $config);
     }
 }

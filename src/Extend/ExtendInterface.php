@@ -3,13 +3,12 @@
 namespace WebmanTech\LaravelFilesystem\Extend;
 
 use Illuminate\Filesystem\FilesystemAdapter;
-use League\Flysystem\Filesystem;
 
 interface ExtendInterface
 {
     /**
      * @param array $config
-     * @return Filesystem|FilesystemAdapter
+     * @return FilesystemAdapter
      */
-    public static function createExtend($config);
+    public static function createExtend(array $config): FilesystemAdapter;
 }

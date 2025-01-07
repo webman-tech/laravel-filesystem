@@ -2,18 +2,22 @@
 
 namespace WebmanTech\LaravelFilesystem\Extend;
 
-use WebmanTech\LaravelFilesystem\VersionHelper;
+use Illuminate\Filesystem\FilesystemAdapter;
+use League\Flysystem\Filesystem;
+use Overtrue\Flysystem\Cos\CosAdapter;
 
+/**
+ * @link https://github.com/overtrue/laravel-filesystem-cos/blob/master/src/CosStorageServiceProvider.php
+ */
 class CosOvertrueExtend implements ExtendInterface
 {
     /**
      * @inheritDoc
      */
-    public static function createExtend($config)
+    public static function createExtend(array $config): FilesystemAdapter
     {
-        if (!VersionHelper::isGteFlysystem3()) {
-            return FlysystemV1\CosOvertrueExtend::createFilesystem($config);
-        }
-        return FlysystemV3\CosOvertrueExtend::createFilesystemAdapter($config);
+        $adapter = new CosAdapter($config);
+
+        return new FilesystemAdapter(new Filesystem($adapter), $adapter);
     }
 }

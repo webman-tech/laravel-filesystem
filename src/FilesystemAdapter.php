@@ -3,36 +3,46 @@
 namespace WebmanTech\LaravelFilesystem;
 
 use Illuminate\Filesystem\FilesystemAdapter as LaravelFilesystemAdapter;
-use InvalidArgumentException;
-use WebmanTech\LaravelFilesystem\Traits\ChangeHttpUse;
 
-class FilesystemAdapter extends LaravelFilesystemAdapter
+/**
+ * @internal
+ */
+final class FilesystemAdapter extends LaravelFilesystemAdapter
 {
-    use ChangeHttpUse;
-
     public static function wrapper(LaravelFilesystemAdapter $filesystemAdapter)
     {
-        if ($filesystemAdapter instanceof self) {
-            return $filesystemAdapter;
-        }
+        return new self($filesystemAdapter->getDriver(), $filesystemAdapter->getAdapter(), $filesystemAdapter->getConfig());
+    }
 
-        /**
-         * laravel 8 -> 9
-         * @link http://laravel.p2hp.com/cndocs/9.x/upgrade#flysystem-3
-         */
-        if (!VersionHelper::isGteLaravel9()) {
-            if (VersionHelper::isGteFlysystem3()) {
-                throw new InvalidArgumentException('illuminate/filesystem<9 only support league/flysystem<=1');
-            }
-            return new self($filesystemAdapter->getDriver());
-        }
-        if (VersionHelper::isGteLaravel9()) {
-            if (!VersionHelper::isGteFlysystem3()) {
-                throw new InvalidArgumentException('illuminate/filesystem>=9 only support league/flysystem>=3');
-            }
-            return new self($filesystemAdapter->getDriver(), $filesystemAdapter->getAdapter(), $filesystemAdapter->getConfig());
-        }
+    /**
+     * @inheritDoc
+     * @return \Webman\Http\Response
+     */
+    public function download($path, $name = null, array $headers = [])
+    {
+        return $this->response($path, $name, $headers, 'attachment');
+    }
 
-        throw new InvalidArgumentException('illuminate/filesystem version not matching league/flysystem version');
+    /**
+     * @inheritDoc
+     * @return \Webman\Http\Response
+     */
+    public function response($path, $name = null, array $headers = [], $disposition = 'inline')
+    {
+        $response = response();
+        $filename = $name ?? basename($path);
+        foreach ($headers + [
+            'Content-Type' => $this->mimeType($path),
+            'Content-Length' => $this->size($path),
+            'Content-Disposition' => "{$disposition}; filename=\"$filename\"",
+        ] as $key => $value) {
+            $response->withHeader($key, $value);
+        }
+        ob_start();
+        $stream = $this->readStream($path);
+        fpassthru($stream);
+        fclose($stream);
+        $content = ob_get_clean();
+        return $response->withBody($content);
     }
 }

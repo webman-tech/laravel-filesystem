@@ -1,17 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
-if (!file_exists(__DIR__ . '/support/helpers.php')) {
-    mkdir(__DIR__ . '/support');
-    copy(__DIR__ . '/../vendor/workerman/webman-framework/src/support/helpers.php', __DIR__ . '/support/helpers.php');
+if (base_path('/config/app.php')) {
+    copy_dir(__DIR__. '/config', base_path('/config'));
 }
-require_once __DIR__ . '/support/helpers.php';
 
-if (
-    !file_exists(__DIR__ . '/config/plugin/webman-tech/laravel-filesystem')
-    || !file_exists(__DIR__ . '/storage/app')
-) {
+if (!file_exists(storage_path('app'))) {
     \WebmanTech\LaravelFilesystem\Install::install();
 }
 
