@@ -9,15 +9,14 @@
     "illuminate/filesystem": "^11.0",
     "league/flysystem": "^3.0"
   },
-  "_comments": [
+  "_comment": [
     "symfony/mime for File::guessExtension",
-    "league/flysystem for LocalDriver",
+    "league/flysystem for Storage LocalDriver",
     "symfony/http-foundation for FilesystAdapter::response",
     "illuminate/http for FilesystAdapter::putFile",
-    "overtrue/flysystem-cos for cos driver",
-    "alphasnow/aliyun-oss-laravel for oss driver",
-    "iidestiny/flysystem-oss for oss driver",
-    "overtrue/flysystem-qiniu for qiniu driver"
+    "overtrue/flysystem-cos for Storage cos driver",
+    "alphasnow/aliyun-oss-laravel for Storage oss driver",
+    "overtrue/flysystem-qiniu for Storage qiniu driver"
   ],
   "autoload": {
     "psr-4": {
