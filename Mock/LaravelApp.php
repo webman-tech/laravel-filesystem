@@ -8,7 +8,7 @@ use Illuminate\Support\Fluent;
  * 仅实现当前包中需要用到的 laravel app 的方法
  * @internal
  */
-class LaravelApp extends Fluent
+final class LaravelApp extends Fluent
 {
     public function value($key, $default = null)
     {

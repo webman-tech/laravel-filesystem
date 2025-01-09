@@ -1,6 +1,6 @@
 <?php
 
-namespace WebmanTech\LaravelFilesystem;
+namespace WebmanTech\LaravelFilesystem\Mock;
 
 use Illuminate\Filesystem\FilesystemAdapter as LaravelFilesystemAdapter;
 
@@ -9,7 +9,7 @@ use Illuminate\Filesystem\FilesystemAdapter as LaravelFilesystemAdapter;
  */
 final class FilesystemAdapter extends LaravelFilesystemAdapter
 {
-    public static function wrapper(LaravelFilesystemAdapter $filesystemAdapter)
+    public static function wrapper(LaravelFilesystemAdapter $filesystemAdapter): self
     {
         return new self($filesystemAdapter->getDriver(), $filesystemAdapter->getAdapter(), $filesystemAdapter->getConfig());
     }

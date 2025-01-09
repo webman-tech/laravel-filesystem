@@ -4,9 +4,10 @@ namespace WebmanTech\LaravelFilesystem;
 
 use Illuminate\Config\Repository;
 use Illuminate\Filesystem\FilesystemManager as LaravelFilesystemManager;
-use WebmanTech\LaravelFilesystem\Mock\LaravelApp;
 use WebmanTech\LaravelFilesystem\Extend\ExtendInterface;
 use WebmanTech\LaravelFilesystem\Helper\ConfigHelper;
+use WebmanTech\LaravelFilesystem\Mock\FilesystemAdapter;
+use WebmanTech\LaravelFilesystem\Mock\LaravelApp;
 
 class FilesystemManager extends LaravelFilesystemManager
 {
