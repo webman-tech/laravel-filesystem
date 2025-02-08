@@ -43,30 +43,30 @@ php webman storage:link
 ### Request 文件上传
 
 原 Laravel 下通过 `$request()->file()` 之后的快捷文件操作，需要使用 [
-`webman-tech/polyfill`](https://github.com/webman-tech/polyfill) 来支持
+`webman-tech/laravel-http`](https://github.com/webman-tech/laravel-http) 来支持
 
 安装
 
 ```bash
-composer require webman-tech/polyfill illuminate/http
+composer require webman-tech/laravel-http
 ```
 
 使用
 
-```bash
+```php
 <?php
 
 namespace app\controller;
 
 use support\Request;
-use WebmanTech\Polyfill\LaravelRequest;
-use WebmanTech\Polyfill\LaravelUploadedFile;
+use WebmanTech\LaravelHttp\Facades\LaravelRequest;
+use WebmanTech\LaravelHttp\Facades\LaravelUploadedFile;
 
 class UserAvatarController
 {
     public function update(Request $request)
     {
-        $path = LaravelRequest::wrapper($request)->file('file')->store('avatars');
+        $path = LaravelRequest::file('file')->store('avatars');
         // 或者
         $path = LaravelUploadedFile::wrapper($request->file('avatar'))->store('avatars');
 
