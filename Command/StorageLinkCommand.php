@@ -3,17 +3,17 @@
 namespace WebmanTech\LaravelFilesystem\Command;
 
 use Symfony\Component\Console\Attribute\AsCommand;
-use WebmanTech\LaravelFilesystem\Facades\File;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use WebmanTech\LaravelFilesystem\Facades\File;
 use WebmanTech\LaravelFilesystem\Helper\ConfigHelper;
 
 /**
  * @link https://github.com/laravel/framework/blob/11.x/src/Illuminate/Foundation/Console/StorageLinkCommand.php
  */
-#[AsCommand(name: 'storage:link')]
+#[AsCommand(name: 'storage:link', description: 'Create the symbolic links configured for the application')]
 class StorageLinkCommand extends Command
 {
     /**
@@ -21,8 +21,6 @@ class StorageLinkCommand extends Command
      */
     protected function configure()
     {
-        $this->setName('storage:link');
-        $this->setDescription('Create the symbolic links configured for the application');
         $this->addOption('relative', null, InputOption::VALUE_NONE, 'Create the symbolic link using relative paths');
         $this->addOption('force', null, InputOption::VALUE_NONE, 'Recreate existing symbolic links');
     }
