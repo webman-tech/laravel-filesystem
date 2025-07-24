@@ -42,7 +42,7 @@ php webman storage:link
 
 ### Request 文件上传
 
-原 Laravel 下通过 `$request()->file()` 之后的快捷文件操作，需要使用 [
+原 Laravel 下通过 `$request->file()` 之后的快捷文件操作，需要使用 [
 `webman-tech/laravel-http`](https://github.com/webman-tech/laravel-http) 来支持
 
 安装
