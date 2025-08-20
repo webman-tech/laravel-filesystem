@@ -3,7 +3,7 @@
 if (!function_exists('get_env')) {
     function get_env(string $key, $default = null)
     {
-        return getenv($key) ?? $default;
+        return getenv($key) ?: $default;
     }
 }
 
