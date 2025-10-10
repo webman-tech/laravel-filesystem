@@ -38,6 +38,7 @@ class FilesystemManager extends LaravelFilesystemManager
             // 此处暂时留个可以扩展的口子
             'url' => $config['url_component'] ?? null,
         ]);
+        /** @phpstan-ignore-next-line */
         parent::__construct($app);
     }
 

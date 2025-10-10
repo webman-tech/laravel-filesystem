@@ -17,6 +17,7 @@ final class FilesystemAdapter extends LaravelFilesystemAdapter
     /**
      * @inheritDoc
      * @return \Webman\Http\Response
+     * @phpstan-ignore-next-line
      */
     public function response($path, $name = null, array $headers = [], $disposition = 'inline')
     {
