@@ -8,7 +8,7 @@ use WebmanTech\LaravelFilesystem\FilesystemManager;
 
 /**
  * @method static \Illuminate\Filesystem\FilesystemAdapter drive(string|null $name = null)
- * @method static \Illuminate\Filesystem\FilesystemAdapter disk(string|null $name = null)
+ * @method static \Illuminate\Filesystem\FilesystemAdapter disk(\UnitEnum|string|null $name = null)
  * @method static \Illuminate\Filesystem\FilesystemAdapter cloud()
  * @method static \Illuminate\Filesystem\FilesystemAdapter build(string|array $config)
  * @method static \Illuminate\Filesystem\FilesystemAdapter createLocalDriver(array $config, string $name = 'local')
