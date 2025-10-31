@@ -2,13 +2,7 @@
 
 > Split from [webman-tech/laravel-monorepo](https://github.com/webman-tech/laravel-monorepo)
 
-Laravel [illuminate/filesystem](https://packagist.org/packages/illuminate/filesystem) for webman
-
-## 介绍
-
-站在巨人（laravel）的肩膀上使文件存储使用更加*可靠*和*便捷*
-
-所有方法和配置与 laravel 几乎一模一样，因此使用方式完全参考 [Laravel文档](https://laravel.com/docs/filesystem) 即可
+适用于 webman 的 Laravel 文件系统组件，基于 illuminate/filesystem 实现。
 
 ## 安装
 
@@ -16,66 +10,38 @@ Laravel [illuminate/filesystem](https://packagist.org/packages/illuminate/filesy
 composer require webman-tech/laravel-filesystem
 ```
 
-## 使用
+## 简介
 
-所有 API 同 laravel，以下仅对有些特殊的操作做说明
+该组件将 Laravel 强大的文件系统功能引入 webman 框架中，提供了统一的 API 来操作本地文件系统和云存储服务。
 
-### 目录权限问题
+所有方法和配置与 Laravel 几乎一致，因此使用方式可完全参考 [Laravel Filesystem 文档](https://laravel.com/docs/filesystem)。
 
-Unix 系统下需要给予 `storage/app` 目录写权限
+## 特殊使用说明
 
-### Facade 入口
+### 1. Facades 使用方式
 
-使用 `WebmanTech\LaravelFilesystem\Facades\File` 代替 `Illuminate\Support\Facades\File`
+- 使用 `WebmanTech\LaravelFilesystem\Facades\File` 替代 `Illuminate\Support\Facades\File`
+- 使用 `WebmanTech\LaravelFilesystem\Facades\Storage` 替代 `Illuminate\Support\Facades\Storage`
 
-使用 `WebmanTech\LaravelFilesystem\Facades\Storage` 代替 `Illuminate\Support\Facades\Storage`
+### 2. 命令行工具
 
-### 建立软链
-
-```bash
+```
+# 建立软链
 php webman storage:link
 ```
 
-> 建立软链之后建议将软链（如 `/public/storage`）加入根目录下的 `.gitignore` 中
+### 3. 文件上传处理
 
-> 同 Laravel，可以支持自定义建立多个对外的路劲软链
-
-### Request 文件上传
-
-原 Laravel 下通过 `$request->file()` 之后的快捷文件操作，需要使用 [
-`webman-tech/laravel-http`](https://github.com/webman-tech/laravel-http) 来支持
-
-安装
-
-```bash
-composer require webman-tech/laravel-http
-```
-
-使用
+原 Laravel 下通过 `$request->file()`
+之后的快捷文件操作，需要使用 [webman-tech/laravel-http](https://github.com/webman-tech/laravel-http) 来支持：
 
 ```php
-<?php
-
-namespace app\controller;
-
-use support\Request;
-use WebmanTech\LaravelHttp\Facades\LaravelRequest;
 use WebmanTech\LaravelHttp\Facades\LaravelUploadedFile;
 
-class UserAvatarController
-{
-    public function update(Request $request)
-    {
-        $path = LaravelRequest::file('file')->store('avatars');
-        // 或者
-        $path = LaravelUploadedFile::wrapper($request->file('avatar'))->store('avatars');
-
-        return response($path);
-    }
-}
+$path = LaravelUploadedFile::wrapper($request->file('avatar'))->store('avatars');
 ```
 
-### 自定义文件系统
+### 4. 自定义文件系统
 
 通过在 `filesystems.php` 配置文件的 `disks` 中的 `driver` 直接使用驱动扩展类的 class 名即可（驱动扩展实现
 `WebmanTech\LaravelFilesystem\Extend\ExtendInterface`）
