@@ -7,7 +7,8 @@
     "php": "^8.2",
     "illuminate/config": "^12.0",
     "illuminate/filesystem": "^12.0",
-    "league/flysystem": "^3.0"
+    "league/flysystem": "^3.0",
+    "webman-tech/common-utils": "^5.0 || dev-main"
   },
   "_comment": [
     "symfony/mime for File::guessExtension",

@@ -5,7 +5,7 @@ namespace WebmanTech\LaravelFilesystem\Extend\OssAlphaSnow;
 use AlphaSnow\Flysystem\Aliyun\AliyunException;
 use AlphaSnow\LaravelFilesystem\Aliyun\Macros\AliyunMacro;
 use Illuminate\Filesystem\FilesystemAdapter;
-use support\Container;
+use WebmanTech\CommonUtils\Container;
 
 /**
  * @internal
@@ -25,7 +25,7 @@ class FilesystemMacroManager extends \AlphaSnow\LaravelFilesystem\Aliyun\Filesys
         foreach ($macros as $macro) {
             $filesystemMacro = Container::make($macro, []); // change this app use
             if (!$filesystemMacro instanceof AliyunMacro) {
-                throw new AliyunException("FilesystemMacroManager register want AliyunMacro, But got ".$filesystemMacro::class, 0);
+                throw new AliyunException("FilesystemMacroManager register want AliyunMacro, But got " . $filesystemMacro::class, 0);
             }
 
             $this->filesystemAdapter::macro($filesystemMacro->name(), $filesystemMacro->macro());

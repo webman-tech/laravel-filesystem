@@ -1,5 +1,7 @@
 <?php
 
+use function WebmanTech\CommonUtils\base_path;
+
 if (!function_exists('storage_path')) {
     /**
      * @param string $path

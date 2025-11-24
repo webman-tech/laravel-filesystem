@@ -6,7 +6,7 @@ use AlphaSnow\Flysystem\Aliyun\AliyunAdapter;
 use AlphaSnow\Flysystem\Aliyun\AliyunFactory;
 use Illuminate\Filesystem\FilesystemAdapter;
 use League\Flysystem\Filesystem;
-use support\Container;
+use WebmanTech\CommonUtils\Container;
 use WebmanTech\LaravelFilesystem\Extend\OssAlphaSnow\FilesystemMacroManager;
 
 /**
