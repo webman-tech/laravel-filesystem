@@ -20,7 +20,7 @@ class OssAlphaSnowExtend implements ExtendInterface
     public static function createExtend(array $config): FilesystemAdapter
     {
         $config['url_prefixed'] = $config['url_prefixed'] ?? true;
-        $client = Container::get(AliyunFactory::class)->createClient($config);
+        $client = Container::getCurrent()->get(AliyunFactory::class)->createClient($config);
         $adapter = new AliyunAdapter($client, $config['bucket'], $config['prefix'] ?? '', $config);
         $driver = new Filesystem($adapter);
         $filesystem = new FilesystemAdapter($driver, $adapter, $config);

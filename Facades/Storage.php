@@ -92,7 +92,7 @@ class Storage
 {
     public static function instance(): FactoryContract
     {
-        return Container::get(FilesystemManager::class);
+        return Container::getCurrent()->get(FilesystemManager::class);
     }
 
     public static function __callStatic($name, $arguments)

@@ -66,7 +66,7 @@ class File
 {
     public static function instance(): Filesystem
     {
-        return Container::get(Filesystem::class);
+        return Container::getCurrent()->get(Filesystem::class);
     }
 
     public static function __callStatic($name, $arguments)

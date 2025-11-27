@@ -23,7 +23,7 @@ class FilesystemMacroManager extends \AlphaSnow\LaravelFilesystem\Aliyun\Filesys
     public function register(array $macros): \AlphaSnow\LaravelFilesystem\Aliyun\FilesystemMacroManager
     {
         foreach ($macros as $macro) {
-            $filesystemMacro = Container::make($macro, []); // change this app use
+            $filesystemMacro = Container::getCurrent()->make($macro, []); // change this app use
             if (!$filesystemMacro instanceof AliyunMacro) {
                 throw new AliyunException("FilesystemMacroManager register want AliyunMacro, But got " . $filesystemMacro::class, 0);
             }
