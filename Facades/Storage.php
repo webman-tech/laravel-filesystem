@@ -90,9 +90,11 @@ use WebmanTech\LaravelFilesystem\FilesystemManager;
  */
 class Storage
 {
+    private static ?FactoryContract $_instance = null;
+
     public static function instance(): FactoryContract
     {
-        return Container::getCurrent()->get(FilesystemManager::class);
+        return self::$_instance ??= Container::getCurrent()->get(FilesystemManager::class);
     }
 
     public static function __callStatic($name, $arguments)

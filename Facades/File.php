@@ -64,9 +64,11 @@ use WebmanTech\CommonUtils\Container;
  */
 class File
 {
+    private static ?Filesystem $_instance = null;
+
     public static function instance(): Filesystem
     {
-        return Container::getCurrent()->get(Filesystem::class);
+        return self::$_instance ??= Container::getCurrent()->get(Filesystem::class);
     }
 
     public static function __callStatic($name, $arguments)
