@@ -3,6 +3,7 @@
 namespace WebmanTech\LaravelFilesystem\Mock;
 
 use Illuminate\Filesystem\FilesystemAdapter as LaravelFilesystemAdapter;
+use WebmanTech\CommonUtils\Response;
 
 /**
  * @internal
@@ -16,25 +17,22 @@ final class FilesystemAdapter extends LaravelFilesystemAdapter
 
     /**
      * @inheritDoc
-     * @return \Webman\Http\Response
-     * @phpstan-ignore-next-line
+     * @return \Webman\Http\Response|\Symfony\Component\HttpFoundation\Response|mixed 宿主原始响应对象
      */
     public function response($path, $name = null, array $headers = [], $disposition = 'inline')
     {
-        $response = response();
+        $response = Response::make();
         $filename = $name ?? basename($path);
-        foreach ($headers + [
-            'Content-Type' => $this->mimeType($path),
-            'Content-Length' => $this->size($path),
-            'Content-Disposition' => "{$disposition}; filename=\"$filename\"",
-        ] as $key => $value) {
-            $response->withHeader($key, $value);
-        }
+        $response->withHeaders($headers + [
+                'Content-Type' => $this->mimeType($path),
+                'Content-Length' => $this->size($path),
+                'Content-Disposition' => "{$disposition}; filename=\"$filename\"",
+            ]);
         ob_start();
         $stream = $this->readStream($path);
         fpassthru($stream);
         fclose($stream);
         $content = ob_get_clean();
-        return $response->withBody($content);
+        return $response->withBody($content)->getRaw();
     }
 }

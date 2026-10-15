@@ -63,6 +63,7 @@ use WebmanTech\LaravelFilesystem\FilesystemManager;
  * @method static string|false mimeType(string $path)
  * @method static string url(string $path)
  * @method static bool providesTemporaryUrls()
+ * @method static bool providesTemporaryUploadUrls()
  * @method static string temporaryUrl(string $path, \DateTimeInterface $expiration, array $options = [])
  * @method static array temporaryUploadUrl(string $path, \DateTimeInterface $expiration, array $options = [])
  * @method static \League\Flysystem\FilesystemOperator getDriver()
@@ -70,6 +71,7 @@ use WebmanTech\LaravelFilesystem\FilesystemManager;
  * @method static array getConfig()
  * @method static void serveUsing(\Closure $callback)
  * @method static void buildTemporaryUrlsUsing(\Closure $callback)
+ * @method static void buildTemporaryUploadUrlsUsing(\Closure $callback)
  * @method static \Illuminate\Filesystem\FilesystemAdapter|mixed when(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
  * @method static \Illuminate\Filesystem\FilesystemAdapter|mixed unless(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
  * @method static void macro(string $name, object|callable $macro)
@@ -92,8 +94,13 @@ class Storage
 {
     private static ?FactoryContract $_instance = null;
 
+    /**
+     * @return \Illuminate\Filesystem\FilesystemManager
+     */
     public static function instance(): FactoryContract
     {
+        // 容器绑定的实现按约定为 FilesystemManager（或其子类）
+        /** @phpstan-ignore-next-line */
         return self::$_instance ??= Container::getCurrent()->get(FilesystemManager::class);
     }
 
