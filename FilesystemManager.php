@@ -13,10 +13,17 @@ class FilesystemManager extends LaravelFilesystemManager
 {
     public function __construct()
     {
+        /**
+         * @var array<string, mixed> $config
+         */
         $config = ConfigHelper::get('filesystems', []);
 
         // 从 disks 中提取 driver 作为自动扩展
-        $autoExtends = collect($config['disks'] ?? [])
+        /**
+         * @var array<string, mixed> $disks
+         */
+        $disks = $config['disks'] ?? [];
+        $autoExtends = collect($disks)
             ->pluck('driver')
             ->unique()
             ->filter(function (string $driver) {
@@ -44,6 +51,7 @@ class FilesystemManager extends LaravelFilesystemManager
 
     /**
      * @inheritDoc
+     * @param array<string, mixed>|null $config
      */
     protected function resolve($name, $config = null)
     {
@@ -57,6 +65,7 @@ class FilesystemManager extends LaravelFilesystemManager
 
     /**
      * @inheritDoc
+     * @param array<string, mixed> $config
      */
     protected function callCustomCreator(array $config)
     {

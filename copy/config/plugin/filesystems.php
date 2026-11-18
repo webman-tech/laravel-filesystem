@@ -1,7 +1,7 @@
 <?php
 
 if (!function_exists('get_env')) {
-    function get_env(string $key, $default = null)
+    function get_env(string $key, mixed $default = null): mixed
     {
         return getenv($key) ?: $default;
     }

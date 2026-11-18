@@ -7,6 +7,7 @@ use Illuminate\Support\Fluent;
 /**
  * 仅实现当前包中需要用到的 laravel app 的方法
  * @internal
+ * @extends Fluent<string, mixed>
  */
 final class LaravelApp extends Fluent
 {
