@@ -2,7 +2,7 @@
 
 > Split from [webman-tech/laravel-monorepo](https://github.com/webman-tech/laravel-monorepo)
 
-适用于 webman 的 Laravel 文件系统组件，基于 illuminate/filesystem 实现。
+适用于 webman 与非 webman 环境的 Laravel 文件系统组件，基于 illuminate/filesystem 实现。
 
 ## 安装
 
@@ -11,8 +11,6 @@ composer require webman-tech/laravel-filesystem
 ```
 
 ## 简介
-
-该组件将 Laravel 强大的文件系统功能引入 webman 框架中，提供了统一的 API 来操作本地文件系统和云存储服务。
 
 所有方法和配置与 Laravel 几乎一致，因此使用方式可完全参考 [Laravel Filesystem 文档](https://laravel.com/docs/filesystem)。
 
@@ -50,8 +48,8 @@ $path = LaravelUploadedFile::wrapper($request->file('avatar'))->store('avatars')
 
 排名不分先后，不做具体推荐
 
-| 厂商          | 扩展包                                                                              | 安装使用                                   |
-|-------------|----------------------------------------------------------------------------------|----------------------------------------|
+| 厂商        | 扩展包                                                                           | 安装使用                                 |
+|-------------|----------------------------------------------------------------------------------|------------------------------------------|
 | QiNiu       | [overtrue/flysystem-qiniu](https://github.com/overtrue/laravel-filesystem-qiniu) | [文档](./docs/extends/qiniu-overtrue.md) |
 | Tencent COS | [overtrue/flysystem-cos](https://github.com/overtrue/laravel-filesystem-cos)     | [文档](./docs/extends/cos-overtrue.md)   |
 | Aliyun OSS  | [alphasnow/aliyun-oss-laravel](https://github.com/alphasnow/aliyun-oss-laravel)  | [文档](./docs/extends/oss-alphasnow.md)  |

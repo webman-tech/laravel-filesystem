@@ -1,5 +1,6 @@
 <?php
 
+use WebmanTech\CommonUtils\Local;
 use function WebmanTech\CommonUtils\base_path;
 
 if (!function_exists('storage_path')) {
@@ -12,6 +13,6 @@ if (!function_exists('storage_path')) {
         if (!$path) {
             return base_path('storage');
         }
-        return path_combine(base_path('storage'), $path);
+        return Local::combinePath(base_path('storage'), $path);
     }
 }
