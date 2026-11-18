@@ -4,9 +4,9 @@
   "license": "MIT",
   "description": "Webman plugin webman-tech/laravel-filesystem",
   "require": {
-    "php": "^8.2",
-    "illuminate/config": "^12.0",
-    "illuminate/filesystem": "^12.0",
+    "php": "^8.3",
+    "illuminate/config": "^13.0",
+    "illuminate/filesystem": "^13.0",
     "league/flysystem": "^3.0",
     "webman-tech/common-utils": "^5.0 || dev-main"
   },
